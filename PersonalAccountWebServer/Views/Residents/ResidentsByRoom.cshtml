@@ -1,0 +1,61 @@
+﻿@model IEnumerable<PersonalAccountWebServer.Models.Resident>
+
+@{
+    ViewData["Title"] = "Resident By Room";
+}
+
+<h1>Проживающие ЛС №@Html.DisplayFor(model=> Model.First().IdRoom)</h1>
+@Html.ActionLink("Добавить жильца", "Create", "Residents")
+<table id="table"
+       data-toggle="table"
+       data-filter-control="true"
+       data-filter-control-container="#service-environment"
+       data-click-to-select="true"
+       data-toolbar="#toolbar"
+       class="table table-striped table-responsive">
+    <thead>
+        <tr>
+            <th data-field="resident" data-filter-control="input" data-sortable="true">
+                Id жильцов
+            </th>
+            <th data-field="surname" data-filter-control="input" data-sortable="true">
+                Фамилия
+            </th>
+            <th data-field="name" data-filter-control="input" data-sortable="true">
+                Имя
+            </th>
+            <th data-field="middle-name" data-filter-control="input" data-sortable="true">
+                Отчество
+            </th>
+            <th data-field="number" data-filter-control="input" data-sortable="true">
+                Id лицевого счёта
+            </th>
+            <th class="column-sm-2" data-formatter="editResidentFormatter">Редактировать | Подробности | Удалить</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Surname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MiddleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdRoom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

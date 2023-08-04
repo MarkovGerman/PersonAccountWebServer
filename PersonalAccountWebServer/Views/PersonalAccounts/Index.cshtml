@@ -1,0 +1,80 @@
+﻿@model IEnumerable<PersonalAccountWebServer.Models.PersonalAccount>
+
+@{
+    ViewData["Title"] = "Accounts Index";
+}
+
+<h1>Список ЛС</h1>
+
+<p>
+    <a asp-action="Create">Добавить лицевой счёт</a>
+</p>
+<table id="table"
+       data-toggle="table"
+       data-filter-control="true"
+       data-filter-control-container="#service-environment"
+       data-click-to-select="true"
+       data-toolbar="#toolbar"
+       class="table table-striped table-responsive">
+    <thead>
+    <tr>
+        <th data-field="id" data-filter-control="input" data-sortable="true">
+            Id
+        </th>
+        <th data-field="number" data-filter-control="input" data-sortable="true">
+            Номер лицевого счёта
+        </th>
+        <th data-field="data-start" data-filter-control="input" data-sortable="true">
+            Дата начала действия
+        </th>
+        <th data-field="data-end" data-filter-control="input" data-sortable="true">
+            Дата окончания действия
+        </th>
+        <th data-field="address" data-filter-control="input" data-sortable="true">
+            Адрес
+        </th>
+        <th data-field="area" data-filter-control="input" data-sortable="true">
+            Площадь помещения
+        </th>
+        <th data-field="bool" data-sortable="true" data-formatter="boolFormatter">
+            Есть ли жильцы
+        </th>
+        <th data-formatter="residentFormatter">Проживающие</th>
+        <th data-formatter="editAccountFormatter">Редактировать | Подробности | Удалить</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberPA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateEnd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Area)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExistResident)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
